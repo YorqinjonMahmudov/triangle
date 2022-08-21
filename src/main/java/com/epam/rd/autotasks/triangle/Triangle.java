@@ -36,19 +36,20 @@ public class Triangle {
 
     public Point centroid() {
 
-        double firstHalfY = second.getY() - first.getY();
-        double secondHalfY = second.getY() - third.getY();
-        double thirdHalfY = third.getY() - first.getY();
+        double firstHalfY = abs(second.getY() - first.getY());
+        double secondHalfY = abs(second.getY() - third.getY());
+        double thirdHalfY = abs(third.getY() - first.getY());
 
-        double centerY = (1 / 3) * (firstHalfY + secondHalfY + thirdHalfY);
+        double centerY = (1 / 3.) * (firstHalfY + secondHalfY + thirdHalfY);
 
         double firstHalfX = second.getX() - first.getX();
         double secondHalfX = second.getX() - third.getX();
         double thirdHalfX = third.getX() - first.getX();
 
-        double centerX = (1 / 3) * (firstHalfX + secondHalfX + thirdHalfX);
+        double centerX = (1 / 3.) * (firstHalfX + secondHalfX + thirdHalfX);
 
         return new Point(centerX, centerY);
+
 
 
     }
