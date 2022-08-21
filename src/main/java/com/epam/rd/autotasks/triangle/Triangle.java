@@ -18,12 +18,9 @@ public class Triangle {
          if ((first == null) || (second == null) || (third == null))
             throw new RuntimeException();
 
-        if (
-                (second.getY() - first.getY() + second.getY() - third.getY()) < third.getY() - first.getY()
-                        || (second.getY() - first.getY() + third.getY() - first.getY() < second.getY() - third.getY())
-                        || (third.getY() - first.getY() + second.getY() - third.getY() < second.getY() - first.getY())
-        )
+      if (area() == 0) {
             throw new RuntimeException();
+        }
 
     }
 
