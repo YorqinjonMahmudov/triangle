@@ -15,11 +15,16 @@ public class Triangle {
         this.second = parameter2;
         this.third = parameter3;
 
-        if ((first.getX() == second.getX() && first.getX() == third.getX())
-                || (first.getY() == second.getY() && first.getY() == third.getY())
-        ) {
+         if ((first == null) || (second == null) || (third == null))
             throw new RuntimeException();
-        }
+
+        if (
+                (second.getY() - first.getY() + second.getY() - third.getY()) < third.getY() - first.getY()
+                        || (second.getY() - first.getY() + third.getY() - first.getY() < second.getY() - third.getY())
+                        || (third.getY() - first.getY() + second.getY() - third.getY() < second.getY() - first.getY())
+        )
+            throw new RuntimeException();
+
     }
 
 
@@ -35,18 +40,9 @@ public class Triangle {
 
 
     public Point centroid() {
+        double centerY = (1 / 3.) * (first.getY() + second.getY() + third.getY());
 
-        double firstHalfY = abs(second.getY() - first.getY());
-        double secondHalfY = abs(second.getY() - third.getY());
-        double thirdHalfY = abs(third.getY() - first.getY());
-
-        double centerY = (1 / 3.) * (firstHalfY + secondHalfY + thirdHalfY);
-
-        double firstHalfX = second.getX() - first.getX();
-        double secondHalfX = second.getX() - third.getX();
-        double thirdHalfX = third.getX() - first.getX();
-
-        double centerX = (1 / 3.) * (firstHalfX + secondHalfX + thirdHalfX);
+        double centerX = (1 / 3.) * (first.getX() + second.getX() + third.getX());
 
         return new Point(centerX, centerY);
 
